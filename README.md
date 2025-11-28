@@ -4,8 +4,9 @@
    ```bash
    git clone https://github.com/utojikulov/grammy-toe.git
    cd grammy-toe
+   npm install
    ```
-
+   
 2. **Настройте переменные окружения**
    ```bash
    cp .env.example .env
@@ -13,7 +14,9 @@
 
    Заполните файл `.env`:
 
-4. **Запустите сервис**
+3. **Запустите сервис**
    ```bash
    docker-compose up -d
+   или
+   docker-compose up
    ```
