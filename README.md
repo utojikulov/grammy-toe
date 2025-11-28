@@ -19,3 +19,4 @@
    или
    docker-compose up
    ```
+let me cook please, to develop this kind of task IDEALLY, 2 hours is not enough ABSOLUTELY.)
