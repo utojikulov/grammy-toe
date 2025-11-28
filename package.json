@@ -1,0 +1,27 @@
+{
+    "name": "tracker-of-expenses",
+    "version": "0.0.1",
+    "description": "",
+    "type": "commonjs",
+    "devDependencies": {
+        "@types/node": "^22.13.10",
+        "nodemon": "^3.1.11",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.8.2"
+    },
+    "dependencies": {
+        "class-transformer": "^0.5.1",
+        "class-validator": "^0.14.3",
+        "dotenv": "^17.2.3",
+        "grammy": "^1.38.4",
+        "pg": "^8.14.1",
+        "reflect-metadata": "^0.2.2",
+        "typeorm": "0.3.27"
+    },
+    "scripts": {
+        "dev": "nodemon --watch src --ext ts --exec ts-node src/index.ts",
+        "build": "tsc",
+        "start": "nodemon ./build/index.js",
+        "typeorm": "typeorm-ts-node-commonjs"
+    }
+}

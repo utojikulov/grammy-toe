@@ -1,0 +1,57 @@
+services:
+    db:
+        image: postgres:17
+        container_name: postgres
+        restart: always
+        environment:
+            POSTGRES_USER: ${PSQL_USER}
+            POSTGRES_PASSWORD: ${PSQL_PWD}
+            POSTGRES_HOST: ${PSQL_HOST}
+
+        ports:
+            - ${PSQL_PORT}:${PSQL_PORT}
+
+        volumes:
+            - ./data:/var/lib/postgresql/data
+
+        healthcheck:
+            test: pg_isready -U ${PSQL_USER}
+            interval: 10s
+            timeout: 3s
+            retries: 3
+        networks:
+            - toe
+
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+
+        ports:
+            - ${APP_PORT}:3000
+        env_file:
+            - ./.env
+
+        depends_on:
+            db:
+                condition: service_healthy
+        develop:
+            watch:
+                - action: sync
+                  path: ./src
+                  target: ./src/
+                  ignore:
+                      - node_modules
+                - action: rebuild
+                  path: package.json
+
+        networks:
+            - toe
+        command: ["npm", "run", "start"]
+
+volumes:
+    data:
+
+networks:
+    toe:
+        driver: bridge
