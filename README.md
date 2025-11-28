@@ -4,7 +4,6 @@
    ```bash
    git clone https://github.com/utojikulov/grammy-toe.git
    cd grammy-toe
-   npm install
    ```
    
 2. **Настройте переменные окружения**
